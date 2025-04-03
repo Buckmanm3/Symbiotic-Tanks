@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwwi315hr3ujr"]
+
+[ext_resource type="Script" uid="uid://bjy5l2vxtaei2" path="res://Test Stuff/Mouse Grab.gd" id="1_4ekra"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m33hw"]
+
+[sub_resource type="Environment" id="Environment_3c6xy"]
+background_mode = 1
+background_color = Color(0, 0.207843, 0.301961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x374g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ekra"]
+albedo_color = Color(1, 0.239216, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kfnrp"]
+
+[node name="Orgin" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_m33hw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 1, 1, 1)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3c6xy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.219216, 0.975676, 0, -0.975676, 0.219216, 0, 0, 0)
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.568512, 0.269528, 0.507382)
+mesh = SubResource("SphereMesh_x374g")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ekra")
+script = ExtResource("1_4ekra")
+
+[node name="Area3D" type="Area3D" parent="Sphere"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere/Area3D"]
+shape = SubResource("SphereShape3D_kfnrp")
+
+[connection signal="mouse_entered" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_exited"]
