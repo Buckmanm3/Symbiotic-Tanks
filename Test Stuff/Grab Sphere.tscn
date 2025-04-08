@@ -1,22 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=11 format=3 uid="uid://bwwi315hr3ujr"]
 
-[ext_resource type="Script" uid="uid://bjy5l2vxtaei2" path="res://Test Stuff/Mouse Grab.gd" id="1_4ekra"]
+[ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Test Stuff/SnapPoint.gd" id="2_3c6xy"]
 [ext_resource type="PackedScene" uid="uid://bsuf32q2g4w0s" path="res://Test Stuff/Grabbable Sphere.tscn" id="2_m33hw"]
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
 background_mode = 1
 background_color = Color(0, 0.207843, 0.301961, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_x374g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ekra"]
-albedo_color = Color(1, 0.239216, 0, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_kfnrp"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_4ekra"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m33hw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ekra"]
+albedo_color = Color(0.47451, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m33hw"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x374g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfnrp"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.329412)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vlvq8"]
 
 [node name="Orgin" type="Node3D"]
 
@@ -30,18 +37,6 @@ transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299,
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3c6xy")
 
-[node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.567307, 0.664621, 0.705389)
-mesh = SubResource("SphereMesh_x374g")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_4ekra")
-script = ExtResource("1_4ekra")
-
-[node name="Area3D" type="Area3D" parent="Sphere"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere/Area3D"]
-shape = SubResource("SphereShape3D_kfnrp")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.15334, 0, 0, 0, 0.0716993, 0, 0, 0, 2.84409, 0, 0, 0)
 mesh = SubResource("BoxMesh_4ekra")
@@ -51,8 +46,24 @@ mesh = SubResource("BoxMesh_4ekra")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
 shape = SubResource("BoxShape3D_m33hw")
 
-[node name="Sphere2" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.916087, 0.712607, 0.535389)
+[node name="Purple Sphere" parent="." instance=ExtResource("2_m33hw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.916087, 0.712607, -0.184752)
+surface_material_override/0 = SubResource("StandardMaterial3D_4ekra")
 
-[connection signal="mouse_entered" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_entered"]
-[connection signal="mouse_exited" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_exited"]
+[node name="Red Sphere" parent="." instance=ExtResource("2_m33hw")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.688987, 0.675629, -0.0959892)
+surface_material_override/0 = SubResource("StandardMaterial3D_m33hw")
+
+[node name="Snap Point" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.785814, 0)
+mesh = SubResource("SphereMesh_x374g")
+surface_material_override/0 = SubResource("StandardMaterial3D_kfnrp")
+script = ExtResource("2_3c6xy")
+
+[node name="Area3D" type="Area3D" parent="Snap Point"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snap Point/Area3D"]
+shape = SubResource("SphereShape3D_vlvq8")
+
+[connection signal="area_shape_entered" from="Snap Point/Area3D" to="Snap Point" method="_on_area_3d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Snap Point/Area3D" to="Snap Point" method="_on_area_3d_area_shape_exited"]
