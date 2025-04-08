@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsuf32q2g4w0s"]
+
+[ext_resource type="Script" uid="uid://bjy5l2vxtaei2" path="res://Test Stuff/Mouse Grab.gd" id="1_3f3ye"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h2ims"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1gbdo"]
+
+[node name="Sphere" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_h2ims")
+script = ExtResource("1_3f3ye")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_1gbdo")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

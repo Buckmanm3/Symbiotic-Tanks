@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=9 format=3 uid="uid://bwwi315hr3ujr"]
 
 [ext_resource type="Script" uid="uid://bjy5l2vxtaei2" path="res://Test Stuff/Mouse Grab.gd" id="1_4ekra"]
+[ext_resource type="PackedScene" uid="uid://bsuf32q2g4w0s" path="res://Test Stuff/Grabbable Sphere.tscn" id="2_m33hw"]
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
 background_mode = 1
@@ -20,7 +21,7 @@ albedo_color = Color(1, 0.239216, 0, 1)
 [node name="Orgin" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282814, 0.496173, 2.0759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282814, 0.496173, 1.32149)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
@@ -30,7 +31,7 @@ transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299,
 environment = SubResource("Environment_3c6xy")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.568512, 0.661159, 0.705842)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.567307, 0.664621, 0.705389)
 mesh = SubResource("SphereMesh_x374g")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_4ekra")
@@ -49,6 +50,9 @@ mesh = SubResource("BoxMesh_4ekra")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
 shape = SubResource("BoxShape3D_m33hw")
+
+[node name="Sphere2" parent="." instance=ExtResource("2_m33hw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.916087, 0.712607, 0.535389)
 
 [connection signal="mouse_entered" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Sphere/Area3D" to="Sphere" method="_on_area_3d_mouse_exited"]
