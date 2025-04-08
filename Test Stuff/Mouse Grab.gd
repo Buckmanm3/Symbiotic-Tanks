@@ -1,5 +1,20 @@
 class_name Grabbable extends MeshInstance3D
 
+"""
+Results:
+	-proof of concept is great, it showed this project is a realistic goal/idea
+	-having the code within the object is nice for simplicty sake but can be an issue since its isolated
+		-Bug: player can grab multiple spheres at once when already holding
+	-area 3d signals need to be local so there needs to be some code within the object
+	-need ref to player object which can tell if an object is currently being held
+	-Snap Grid stuff is very possible it just may need some good structure planning
+		-if a both snap-node and node need to store if they are attached
+			-avoid snapping multiple nodes to one grid spot
+			-node needs position to update each frame
+			-node needs to know when it is released within deadzone so it can snap
+"""
+
+
 var mouseOver:bool = false
 var holding:bool = false
 var offset:Vector3
