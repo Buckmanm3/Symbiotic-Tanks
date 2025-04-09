@@ -19,12 +19,12 @@ var mouseOver:bool = false
 var holding:bool = false
 var offset:Vector3
 @onready var area : Area3D = $Area3D
-@onready var dist:float = get_viewport().get_camera_3d().position.distance_to(area.position)
-
+@onready var dist : float = get_viewport().get_camera_3d().position.distance_to(area.position)
+@onready var player : Player = get_tree().root.get_child(0).get_node("Player")
 
 func _process(delta: float) -> void:
 	var mousePos = get_viewport().get_mouse_position()
-	if mouseOver or holding:
+	if (mouseOver or holding) && !player.movingCamera:
 		if Input.is_action_just_released("Zoom_Out"):
 			dist -= .1
 		if Input.is_action_just_released("Zoom_In"):
@@ -33,8 +33,10 @@ func _process(delta: float) -> void:
 			offset = get_viewport().get_camera_3d().project_position(mousePos, dist)
 			position = offset
 			holding = true
+			player.holding = true
 		else:
 			holding = false
+			player.holding = false
 	else:
 		dist = get_viewport().get_camera_3d().position.distance_to(area.position)
 	
