@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=12 format=3 uid="uid://bwwi315hr3ujr"]
 
 [ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Test Stuff/SnapPoint.gd" id="2_3c6xy"]
 [ext_resource type="PackedScene" uid="uid://bsuf32q2g4w0s" path="res://Test Stuff/Grabbable Sphere.tscn" id="2_m33hw"]
+[ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player.tscn" id="3_3c6xy"]
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
 background_mode = 1
 background_color = Color(0, 0.207843, 0.301961, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4ekra"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m33hw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ekra"]
 albedo_color = Color(0.47451, 0, 1, 1)
@@ -25,26 +22,17 @@ albedo_color = Color(0, 1, 1, 0.329412)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vlvq8"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3c6xy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x374g"]
+
 [node name="Orgin" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282814, 0.496173, 1.32149)
-current = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299, 0.5, -0.332829, 0.799515, 0, 0.292893, -1.70711)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3c6xy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.15334, 0, 0, 0, 0.0716993, 0, 0, 0, 2.84409, 0, 0, 0)
-mesh = SubResource("BoxMesh_4ekra")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
-shape = SubResource("BoxShape3D_m33hw")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299, 0.5, -0.332829, 0.799515, 0.282814, 0.789066, -0.38562)
 
 [node name="Purple Sphere" parent="." instance=ExtResource("2_m33hw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.916087, 0.712607, -0.184752)
@@ -64,6 +52,20 @@ script = ExtResource("2_3c6xy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Snap Point/Area3D"]
 shape = SubResource("SphereShape3D_vlvq8")
+
+[node name="Player" parent="." instance=ExtResource("3_3c6xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345103, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(3.06785, 0, 0, 0, 0.100039, 0, 0, 0, 3.30162, 0, -0.429437, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.00427, 0, 0, 0, 1.00427, 0, 0, 0, 1.00427, 0, 0, 0)
+shape = SubResource("BoxShape3D_3c6xy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1.00427, 0, 0, 0, 1.00427, 0, 0, 0, 1.00427, 0, 0, 0)
+mesh = SubResource("BoxMesh_x374g")
 
 [connection signal="area_shape_entered" from="Snap Point/Area3D" to="Snap Point" method="_on_area_3d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Snap Point/Area3D" to="Snap Point" method="_on_area_3d_area_shape_exited"]
