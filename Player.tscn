@@ -9,6 +9,7 @@
 script = ExtResource("1_kpjcp")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
+collision_mask = 2
 script = ExtResource("1_xhfnw")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]

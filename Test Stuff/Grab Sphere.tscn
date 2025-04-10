@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=11 format=3 uid="uid://bwwi315hr3ujr"]
 
 [ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Test Stuff/SnapPoint.gd" id="2_3c6xy"]
 [ext_resource type="PackedScene" uid="uid://bsuf32q2g4w0s" path="res://Test Stuff/Grabbable Sphere.tscn" id="2_m33hw"]
@@ -10,9 +10,6 @@ background_color = Color(0, 0.207843, 0.301961, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ekra"]
 albedo_color = Color(0.47451, 0, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m33hw"]
-albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_x374g"]
 
@@ -38,10 +35,6 @@ transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299,
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.916087, 0.712607, -0.184752)
 surface_material_override/0 = SubResource("StandardMaterial3D_4ekra")
 
-[node name="Red Sphere" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.688987, 0.675629, -0.0959892)
-surface_material_override/0 = SubResource("StandardMaterial3D_m33hw")
-
 [node name="Snap Point" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.785814, 0)
 mesh = SubResource("SphereMesh_x374g")
@@ -58,6 +51,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345103, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(3.06785, 0, 0, 0, 0.100039, 0, 0, 0, 3.30162, 0, -0.429437, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1.00427, 0, 0, 0, 1.00427, 0, 0, 0, 1.00427, 0, 0, 0)
