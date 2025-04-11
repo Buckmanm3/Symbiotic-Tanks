@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://uylb5yibsgor"]
+
+[ext_resource type="PackedScene" uid="uid://cgi7yymr0qc53" path="res://Snap Point.tscn" id="1_1mebu"]
+
+[node name="Sample Veichle" type="Node3D"]
+
+[node name="Snap Point" parent="." instance=ExtResource("1_1mebu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.3, 0, 0)
+
+[node name="Snap Point2" parent="." instance=ExtResource("1_1mebu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.3)
+
+[node name="Snap Point3" parent="." instance=ExtResource("1_1mebu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.3)
+
+[node name="Snap Point4" parent="." instance=ExtResource("1_1mebu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.3, 0, 0)

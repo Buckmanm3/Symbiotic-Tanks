@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgi7yymr0qc53"]
+
+[ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Test Stuff/SnapPoint.gd" id="1_1eu6b"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bpwoj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0y7x"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.188235)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_26631"]
+
+[node name="Snap Point" type="MeshInstance3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_bpwoj")
+surface_material_override/0 = SubResource("StandardMaterial3D_d0y7x")
+script = ExtResource("1_1eu6b")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_26631")
+
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area3D" to="." method="_on_area_3d_area_shape_exited"]

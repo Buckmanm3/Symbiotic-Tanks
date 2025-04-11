@@ -9,6 +9,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_1gbdo"]
 
 [node name="Sphere" type="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("SphereMesh_h2ims")
 script = ExtResource("1_3f3ye")
 
@@ -18,6 +19,7 @@ script = ExtResource("1_3f3ye")
 shape = SubResource("SphereShape3D_3f3ye")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1gbdo")
