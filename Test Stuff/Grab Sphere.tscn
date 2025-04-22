@@ -1,30 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=7 format=3 uid="uid://bwwi315hr3ujr"]
 
-[ext_resource type="PackedScene" uid="uid://bsuf32q2g4w0s" path="res://Test Stuff/Grabbable Sphere.tscn" id="2_m33hw"]
 [ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player.tscn" id="3_3c6xy"]
+[ext_resource type="PackedScene" uid="uid://bdmnncag57bv6" path="res://Nodes/Base.tscn" id="3_kfnrp"]
 [ext_resource type="PackedScene" uid="uid://uylb5yibsgor" path="res://sample_vehichle.tscn" id="3_x374g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfnrp"]
-albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
 background_mode = 1
 background_color = Color(0, 0.207843, 0.301961, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlvq8"]
-albedo_color = Color(1, 0, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_3c6xy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfd0x"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sogvs"]
-albedo_color = Color(1, 1, 0, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_x374g"]
 
 [node name="Orgin" type="Node3D"]
-
-[node name="Sphere" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.62732, -0.0236675, 0.250801)
-surface_material_override/0 = SubResource("StandardMaterial3D_kfnrp")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3c6xy")
@@ -37,14 +25,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.230547, 0)
 
 [node name="Sample Veichle" parent="Player" instance=ExtResource("3_x374g")]
 
-[node name="Sphere2" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.62732, -0.169593, -0.253872)
-surface_material_override/0 = SubResource("StandardMaterial3D_vlvq8")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.02054, 0)
 
-[node name="Sphere3" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.815195, -0.0743702, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_tfd0x")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41144e-05, 0.000789285, -0.000108576)
+mesh = SubResource("BoxMesh_3c6xy")
 
-[node name="Sphere4" parent="." instance=ExtResource("2_m33hw")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.0172846, -0.178173, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_sogvs")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_x374g")
+
+[node name="Base" parent="." instance=ExtResource("3_kfnrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, -0.453081, -1.65701)

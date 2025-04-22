@@ -1,7 +1,7 @@
 class_name SnapPoint extends MeshInstance3D
 
 var snapped : bool = false
-var connectedNode : Grabbable = null
+var connectedNode : BaseNode = null
 var currentHealth : int = 0
 enum type {wheel, body, weapon}
 @export var nodeType: type
@@ -11,17 +11,23 @@ func _ready() -> void:
 	
 func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() != null:
-		if area.get_parent().has_method("getGrabed"):
-			if connectedNode == null:
-				snapped = true
-				connectedNode = area.get_parent()
+		if area.get_parent().get_parent() != null:
+			if area.get_parent().get_parent().has_method("getGrabed"):
+				if connectedNode == null:
+					snapped = true
+					connectedNode = area.get_parent().get_parent()
+					connectedNode.base.sleeping = true;
+					print("Snap")
 
 func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() != null:
-		if area.get_parent().has_method("getGrabed"):
-			if connectedNode != null:
-				snapped = false
-				connectedNode = null
+		if area.get_parent().get_parent() != null:
+			if area.get_parent().get_parent().has_method("getGrabed"):
+				if connectedNode != null:
+					snapped = false
+					connectedNode.base.sleeping = false;
+					connectedNode = null
+					print("Unsnap")
 
 func _process(delta: float) -> void:
 	if snapped:

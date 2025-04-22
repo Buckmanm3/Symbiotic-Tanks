@@ -10,6 +10,7 @@
 
 [node name="Sphere" type="MeshInstance3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 3
 mesh = SubResource("SphereMesh_h2ims")
 script = ExtResource("1_3f3ye")
 
