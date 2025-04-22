@@ -1,11 +1,16 @@
 class_name Grabbable extends MeshInstance3D
 
+# vars for holding sphere
 var mouseOver:bool = false
 var holding:bool = false
 var offset:Vector3
 var area : Area3D  
 var player : Player  
 var dist : float 
+
+# exposed vars for gameplay
+@export var moveBonus: float = 0
+@export var health: float = 0
 
 func _ready() -> void:
 	area = $Area3D

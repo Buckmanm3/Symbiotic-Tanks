@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://uylb5yibsgor"]
+[gd_scene load_steps=5 format=3 uid="uid://uylb5yibsgor"]
 
 [ext_resource type="PackedScene" uid="uid://cgi7yymr0qc53" path="res://Snap Point.tscn" id="1_1mebu"]
+[ext_resource type="Script" uid="uid://b0t5h5abpk5wn" path="res://sample_vehichle.gd" id="1_7bron"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_53oy6"]
 
@@ -9,16 +10,20 @@ transparency = 1
 no_depth_test = true
 albedo_color = Color(0, 1, 1, 0.196078)
 
-[node name="Sample Veichle" type="Node3D"]
+[node name="Sample Veichle" type="Node3D" node_paths=PackedStringArray("Nodes")]
+script = ExtResource("1_7bron")
+Nodes = [NodePath("Snap Point"), NodePath("Snap Point2"), NodePath("Snap Point3"), NodePath("Snap Point4")]
 
 [node name="Snap Point" parent="." instance=ExtResource("1_1mebu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.3, 0, 0)
 
 [node name="Snap Point2" parent="." instance=ExtResource("1_1mebu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.3)
+nodeType = 1
 
 [node name="Snap Point3" parent="." instance=ExtResource("1_1mebu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.3)
+nodeType = 2
 
 [node name="Snap Point4" parent="." instance=ExtResource("1_1mebu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.3, 0, 0)
