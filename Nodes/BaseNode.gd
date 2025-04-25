@@ -7,14 +7,17 @@ var offset:Vector3
 var player : Player  
 var dist : float 
 @onready var base : RigidBody3D = $"."
-# exposed vars for gameplay
+
+
 @export var moveBonus: float = 0
 @export var health: float = 0
+@export var turnBonus: float = 0
 
 func _ready() -> void:
 	player = get_tree().root.get_child(0).get_node("Player")
 	dist = global_position.distance_to(get_viewport().get_camera_3d().global_position)
-
+	
+	
 func _process(delta: float) -> void:
 	var mousePos = get_viewport().get_mouse_position()
 	if (mouseOver or holding) && !player.movingCamera:

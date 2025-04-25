@@ -29,6 +29,7 @@ func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index
 					snapped = false
 					connectedNode.base.sleeping = false;
 					connectedNode = null
+					snap.emit()
 					print("Unsnap")
 
 func _process(delta: float) -> void:
@@ -51,3 +52,6 @@ func getSpeed():
 	if snapped && connectedNode != null:
 		return connectedNode.moveBonus
 		
+func getTurn():
+	if snapped && connectedNode != null:
+		return connectedNode.turnBonus

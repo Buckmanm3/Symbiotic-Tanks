@@ -11,8 +11,9 @@
 [node name="Base" type="RigidBody3D"]
 gravity_scale = 0.1
 script = ExtResource("1_7pj60")
-moveBonus = 0.3
+moveBonus = 0.01
 health = 1.0
+turnBonus = 0.02
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)

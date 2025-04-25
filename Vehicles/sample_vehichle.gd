@@ -4,7 +4,6 @@ class_name SampleVehicle extends Vehicle
 var NodesSnapped: Array[bool] = []
 
 func _ready() -> void:
-	speed = 0
 	for node in Nodes:
 		NodesSnapped.append(node.snapped)
 	Nodes[1].snap.connect(UpdateSnapped)
@@ -17,9 +16,9 @@ func UpdateSnapped():
 
 func UpdateSpeed():
 	speed = 0
+	turn = 0
 	var size:int = Nodes.size()
 	for n in size:
 		if NodesSnapped[n]:
 			speed += Nodes[n].getSpeed()
-			print(Nodes[n].getSpeed())
-	print("Speed: " + str(speed))
+			turn += Nodes[n].getTurn()
