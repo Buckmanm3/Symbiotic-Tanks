@@ -5,6 +5,7 @@ var connectedNode : BaseNode = null
 var currentHealth : int = 0
 enum type {wheel, body, weapon}
 @export var nodeType: type
+signal	snap
 
 func _ready() -> void:
 	SetTypeColor()
@@ -17,6 +18,7 @@ func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_inde
 					snapped = true
 					connectedNode = area.get_parent().get_parent()
 					connectedNode.base.sleeping = true;
+					snap.emit()
 					print("Snap")
 
 func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
@@ -38,12 +40,14 @@ func SetTypeColor():
 	var mat = StandardMaterial3D.new()
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	if nodeType == 0: # wheels are green
-		print("green: " + str(nodeType))
 		mat.albedo_color = Color(0, 1, 0, .25)
 	elif nodeType == 1: # weapons are Red
 		mat.albedo_color = Color(1, 0, 0, .25)
-		print("red: " + str(nodeType))
 	else: # body nodes are blue
 		mat.albedo_color = Color(0, 0, 1, .25)
 	$".".set_surface_override_material(0, mat)
 	
+func getSpeed():
+	if snapped && connectedNode != null:
+		return connectedNode.moveBonus
+		

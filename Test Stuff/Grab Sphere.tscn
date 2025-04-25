@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwwi315hr3ujr"]
+[gd_scene load_steps=6 format=3 uid="uid://bwwi315hr3ujr"]
 
 [ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player.tscn" id="3_3c6xy"]
 [ext_resource type="PackedScene" uid="uid://bdmnncag57bv6" path="res://Nodes/Base.tscn" id="3_kfnrp"]
-[ext_resource type="PackedScene" uid="uid://uylb5yibsgor" path="res://sample_vehichle.tscn" id="3_x374g"]
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
 background_mode = 1
@@ -21,9 +20,7 @@ environment = SubResource("Environment_3c6xy")
 transform = Transform3D(0.707107, 0.689907, -0.155009, -0.5, 0.642847, 0.580299, 0.5, -0.332829, 0.799515, 0.282814, 0.789066, -0.38562)
 
 [node name="Player" parent="." instance=ExtResource("3_3c6xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.230547, 0)
-
-[node name="Sample Veichle" parent="Player" instance=ExtResource("3_x374g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.351772, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -3.02054, 0)
