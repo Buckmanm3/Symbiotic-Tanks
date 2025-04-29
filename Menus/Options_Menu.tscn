@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://8wikn572gaxw"]
+
+[ext_resource type="Script" uid="uid://bpjqskw38qtxk" path="res://Menus/options_menu.gd" id="1_0lkn2"]
+
+[node name="Options_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lkn2")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 534.0
+offset_top = 209.0
+offset_right = 574.0
+offset_bottom = 249.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.1875
+anchor_top = -1.65
+anchor_right = 1.1875
+anchor_bottom = 2.65
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Master Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Master"
+
+[node name="Master Slider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music"
+
+[node name="Music Slider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SFX Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SFX"
+
+[node name="SFX Slider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Back" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back"
+
+[connection signal="value_changed" from="Control/VBoxContainer/Master Slider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/Music Slider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/SFX Slider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Control/VBoxContainer/Back" to="." method="_on_back_pressed"]

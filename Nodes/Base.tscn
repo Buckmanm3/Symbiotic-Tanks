@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdmnncag57bv6"]
+[gd_scene load_steps=6 format=3 uid="uid://bdmnncag57bv6"]
 
 [ext_resource type="Script" uid="uid://bl7k61e6s22u0" path="res://Nodes/BaseNode.gd" id="1_7pj60"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7pj60"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pj60"]
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y68i3"]
 
@@ -18,6 +21,7 @@ turnBonus = 0.02
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = SubResource("SphereMesh_7pj60")
+surface_material_override/0 = SubResource("StandardMaterial3D_7pj60")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 

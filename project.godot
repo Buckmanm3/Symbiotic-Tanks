@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="symbiotic tanks"
-run/main_scene="uid://bwwi315hr3ujr"
+run/main_scene="uid://bqmr3puni0m8p"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [input]
 
