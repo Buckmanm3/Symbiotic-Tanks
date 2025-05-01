@@ -61,3 +61,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3c6xy")
 transform = Transform3D(0.3, 0, 0, 0, 3, 0, 0, 0, 0.3, -0.0434089, 0, -3.95231)
 mesh = SubResource("CylinderMesh_m33hw")
 surface_material_override/0 = SubResource("StandardMaterial3D_3c6xy")
+
+[node name="Base2" parent="." instance=ExtResource("3_kfnrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435795, 0.100488, -1.08137)
+
+[node name="Base3" parent="." instance=ExtResource("3_kfnrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.762202, 0.100488, -0.600134)
+
+[node name="Base4" parent="." instance=ExtResource("3_kfnrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, 0.100488, -0.757713)
