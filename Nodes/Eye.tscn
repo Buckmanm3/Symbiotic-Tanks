@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://boxo8y0o08p0p"]
+
+[ext_resource type="Script" uid="uid://bl7k61e6s22u0" path="res://Nodes/BaseNode.gd" id="1_sadld"]
+[ext_resource type="PackedScene" uid="uid://dw6o4gykk25jx" path="res://Blender/Eye.blend" id="2_am53q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7pj60"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pj60"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y68i3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fco5u"]
+
+[node name="Base" type="RigidBody3D"]
+gravity_scale = 0.1
+script = ExtResource("1_sadld")
+moveBonus = 0.01
+health = 1.0
+turnBonus = 0.02
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("SphereMesh_7pj60")
+surface_material_override/0 = SubResource("StandardMaterial3D_7pj60")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="Mouse Collider" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("SphereShape3D_y68i3")
+
+[node name="Physics Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+shape = SubResource("SphereShape3D_fco5u")
+
+[node name="Eye" parent="." instance=ExtResource("2_am53q")]
+transform = Transform3D(0.079, 0, 0, 0, 0.079, 0, 0, 0, 0.079, 0, 0, 0)
+
+[connection signal="mouse_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_exited"]

@@ -14,6 +14,10 @@ config/name="symbiotic tanks"
 run/main_scene="uid://bqmr3puni0m8p"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
+
 [input]
 
 Zoom_In={

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://7h4w0vvo6sea"]
 
-[ext_resource type="Script" uid="uid://dhwao8qyu2s4j" path="res://player.gd" id="1_kpjcp"]
-[ext_resource type="Script" uid="uid://7mqck187c8fv" path="res://CameraScript.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://dhwao8qyu2s4j" path="res://Player/player.gd" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://7mqck187c8fv" path="res://Player/CameraScript.gd" id="1_xhfnw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kpjcp"]
 
@@ -15,6 +15,7 @@ albedo_color = Color(1, 0, 0, 0.196078)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_kpjcp")
+type = null
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 collision_mask = 2

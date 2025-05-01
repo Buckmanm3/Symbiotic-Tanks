@@ -1,17 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdmnncag57bv6"]
+[gd_scene load_steps=10 format=3 uid="uid://bdmnncag57bv6"]
 
 [ext_resource type="Script" uid="uid://bl7k61e6s22u0" path="res://Nodes/BaseNode.gd" id="1_7pj60"]
-[ext_resource type="PackedScene" uid="uid://dw6o4gykk25jx" path="res://Blender/Eye.blend" id="2_y68i3"]
+[ext_resource type="Shader" uid="uid://dvssf0naiflwv" path="res://Shaders/Fernsel.gdshader" id="2_y68i3"]
+[ext_resource type="PackedScene" uid="uid://dw6o4gykk25jx" path="res://Blender/Eye.blend" id="3_fco5u"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7pj60"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pj60"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y68i3"]
 transparency = 1
-albedo_color = Color(0, 1, 0, 0)
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y68i3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fco5u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fco5u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxs2f"]
+render_priority = 0
+shader = ExtResource("2_y68i3")
 
 [node name="Base" type="RigidBody3D"]
 gravity_scale = 0.1
@@ -20,22 +27,29 @@ moveBonus = 0.01
 health = 1.0
 turnBonus = 0.02
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="BaseSphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = SubResource("SphereMesh_7pj60")
-surface_material_override/0 = SubResource("StandardMaterial3D_7pj60")
+surface_material_override/0 = SubResource("StandardMaterial3D_y68i3")
 
-[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+[node name="Area3D" type="Area3D" parent="BaseSphere"]
 
-[node name="Mouse Collider" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+[node name="Mouse Collider" type="CollisionShape3D" parent="BaseSphere/Area3D"]
 shape = SubResource("SphereShape3D_y68i3")
 
 [node name="Physics Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+visible = false
 shape = SubResource("SphereShape3D_fco5u")
 
-[node name="Eye" parent="." instance=ExtResource("2_y68i3")]
-transform = Transform3D(0.079, 0, 0, 0, 0.079, 0, 0, 0, 0.079, 0, 0, 0)
+[node name="Eye" parent="." instance=ExtResource("3_fco5u")]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
 
-[connection signal="mouse_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_entered"]
-[connection signal="mouse_exited" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_exited"]
+[node name="Highlight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("SphereMesh_fco5u")
+skeleton = NodePath("../BaseSphere")
+surface_material_override/0 = SubResource("ShaderMaterial_rxs2f")
+
+[connection signal="mouse_entered" from="BaseSphere/Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="BaseSphere/Area3D" to="." method="_on_area_3d_mouse_exited"]

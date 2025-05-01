@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://uylb5yibsgor"]
 
-[ext_resource type="PackedScene" uid="uid://cgi7yymr0qc53" path="res://Test Stuff/Snap Point.tscn" id="1_1mebu"]
+[ext_resource type="PackedScene" uid="uid://cgi7yymr0qc53" path="res://Nodes/Snap Point.tscn" id="1_1mebu"]
 [ext_resource type="Script" uid="uid://b0t5h5abpk5wn" path="res://Vehicles/sample_vehichle.gd" id="1_7bron"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_53oy6"]

@@ -18,6 +18,7 @@ func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_inde
 					snapped = true
 					connectedNode = area.get_parent().get_parent()
 					connectedNode.base.sleeping = true;
+					connectedNode.snapped = true;
 					snap.emit()
 					print("Snap")
 
@@ -28,6 +29,7 @@ func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index
 				if connectedNode != null:
 					snapped = false
 					connectedNode.base.sleeping = false;
+					connectedNode.snapped = false;
 					connectedNode = null
 					snap.emit()
 					print("Unsnap")

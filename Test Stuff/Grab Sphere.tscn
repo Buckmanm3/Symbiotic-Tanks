@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwwi315hr3ujr"]
 
-[ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player.tscn" id="3_3c6xy"]
+[ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player/Player.tscn" id="3_3c6xy"]
 [ext_resource type="PackedScene" uid="uid://bdmnncag57bv6" path="res://Nodes/Base.tscn" id="3_kfnrp"]
 
 [sub_resource type="Environment" id="Environment_3c6xy"]
@@ -46,15 +46,6 @@ shape = SubResource("BoxShape3D_x374g")
 
 [node name="Base" parent="." instance=ExtResource("3_kfnrp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, 0.603971, -1.08137)
-
-[node name="Base2" parent="." instance=ExtResource("3_kfnrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, 0.603971, -1.65701)
-
-[node name="Base3" parent="." instance=ExtResource("3_kfnrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577101, 0.603971, -1.65701)
-
-[node name="Base4" parent="." instance=ExtResource("3_kfnrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763086, 0.603971, -1.65701)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 3, 0, 0, 0, 0.3, 2.09788, 0, 0)

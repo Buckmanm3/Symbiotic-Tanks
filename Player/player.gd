@@ -5,7 +5,11 @@ var movingCamera: bool = false
 var vehicleConfig: Vehicle = null
 enum VehicleType {basic}
 var basic_vehicle  = preload("res://Vehicles/sample_vehichle.tscn")
+var target : BaseNode = null
+
+
 @export var  type:VehicleType = VehicleType.basic
+
 func _ready() -> void:
 	vehicleConfig = get_node("Vehicle")
 	if type == VehicleType.basic:

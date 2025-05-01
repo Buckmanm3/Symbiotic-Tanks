@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgi7yymr0qc53"]
 
-[ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Test Stuff/SnapPoint.gd" id="1_1eu6b"]
+[ext_resource type="Script" uid="uid://hp7cy2oa3rqr" path="res://Nodes/SnapPoint.gd" id="1_1eu6b"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bpwoj"]
 
