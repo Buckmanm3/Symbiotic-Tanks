@@ -45,7 +45,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m33hw")
 shape = SubResource("BoxShape3D_x374g")
 
 [node name="Base" parent="." instance=ExtResource("3_kfnrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, 0.603971, -1.08137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163445, 0.100488, -1.08137)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 3, 0, 0, 0, 0.3, 2.09788, 0, 0)
