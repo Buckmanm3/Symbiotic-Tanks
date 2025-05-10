@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5mq0xb1656b"]
+[gd_scene load_steps=4 format=3 uid="uid://h5mq0xb1656b"]
 
+[ext_resource type="Script" uid="uid://ddqgx7ngr57aw" path="res://Menus/new_options.gd" id="1_e0ev7"]
 [ext_resource type="VideoStream" uid="uid://cecjq4r2kgg0e" path="res://TitleSprites/Title Video.ogv" id="1_n8jfi"]
+[ext_resource type="Theme" uid="uid://bryum4h2swtin" path="res://Menus/Buttons.theme" id="2_1tcgt"]
 
 [node name="NewOptions" type="CanvasLayer"]
+script = ExtResource("1_e0ev7")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -26,14 +29,39 @@ loop = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -261.0
+offset_right = 167.0
+offset_bottom = -73.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+
+[node name="Master Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_1tcgt")
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_1tcgt")
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_1tcgt")
+text = "Back"
+
+[connection signal="value_changed" from="Control/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="Control/VBoxContainer/Back" to="." method="_on_back_pressed"]
