@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://h5mq0xb1656b"]
+[gd_scene load_steps=2 format=3 uid="uid://h5mq0xb1656b"]
+
+[ext_resource type="VideoStream" uid="uid://cecjq4r2kgg0e" path="res://TitleSprites/Title Video.ogv" id="1_n8jfi"]
 
 [node name="NewOptions" type="CanvasLayer"]
 
@@ -9,6 +11,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_n8jfi")
+autoplay = true
+expand = true
+loop = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1

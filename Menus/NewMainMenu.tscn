@@ -1,102 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://2xe0fyeeppwi"]
+[gd_scene load_steps=4 format=3 uid="uid://2xe0fyeeppwi"]
 
 [ext_resource type="Script" uid="uid://fuj1cftthvp1" path="res://Menus/Main_Menu.gd" id="1_b3j56"]
-[ext_resource type="FontFile" uid="uid://dripfkkgraejo" path="res://Fonts/Tajamuka Script.ttf" id="2_fwq44"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3j56"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwq44"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygn1q"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujywv"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0.411765, 0.705882, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wviv3"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="Theme" id="Theme_a5jci"]
-Button/colors/font_color = Color(1, 0.45098, 0.188235, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(1, 0, 0, 1)
-Button/colors/font_hover_color = Color(0.94902, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(0.905882, 0.890196, 0.113725, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0.905882, 0.890196, 0.113725, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(0, 0.411765, 0.705882, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/align_to_largest_stylebox = 0
-Button/constants/h_separation = 4
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/font_sizes/font_size = 40
-Button/fonts/font = ExtResource("2_fwq44")
-Button/styles/disabled = SubResource("StyleBoxFlat_b3j56")
-Button/styles/focus = SubResource("StyleBoxFlat_fwq44")
-Button/styles/hover = SubResource("StyleBoxFlat_ygn1q")
-Button/styles/normal = SubResource("StyleBoxFlat_ujywv")
-Button/styles/pressed = SubResource("StyleBoxFlat_wviv3")
+[ext_resource type="VideoStream" uid="uid://cecjq4r2kgg0e" path="res://TitleSprites/Title Video.ogv" id="2_ygn1q"]
+[ext_resource type="Theme" uid="uid://bryum4h2swtin" path="res://Menus/Buttons.theme" id="3_fwq44"]
 
 [node name="NewMainMenu" type="CanvasLayer"]
 script = ExtResource("1_b3j56")
@@ -114,44 +20,45 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 50.0
-offset_right = 1.0
-offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+stream = ExtResource("2_ygn1q")
+autoplay = true
+expand = true
+loop = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = 144.0
-offset_right = 179.0
-offset_bottom = 296.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -208.0
+offset_right = 181.0
+offset_bottom = -56.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="Play" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme = SubResource("Theme_a5jci")
+theme = ExtResource("3_fwq44")
 text = "Play"
 
 [node name="Settings" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme = SubResource("Theme_a5jci")
+theme = ExtResource("3_fwq44")
 text = "Settings
 "
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-theme = SubResource("Theme_a5jci")
+theme = ExtResource("3_fwq44")
 text = "Quit"
 
 [connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_play_pressed"]
