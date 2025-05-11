@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm74leww6v47f"]
+
+[ext_resource type="Script" uid="uid://c7sbh23xb14no" path="res://Menus/level_select.gd" id="1_vqc2t"]
+[ext_resource type="Theme" uid="uid://bryum4h2swtin" path="res://Menus/Buttons.theme" id="2_0am2j"]
+
+[node name="LevelSelect" type="CanvasLayer"]
+script = ExtResource("1_vqc2t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.203556, 0.366477, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -47.0
+offset_right = 134.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lv1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0am2j")
+text = "Lv1"
+
+[node name="Lv2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0am2j")
+text = "Lv2"
+
+[node name="Lv3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0am2j")
+text = "Lv3"
+
+[connection signal="pressed" from="HBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Lv2" to="." method="_on_lv_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Lv3" to="." method="_on_lv_3_pressed"]
