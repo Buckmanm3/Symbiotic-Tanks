@@ -48,7 +48,6 @@ func _process(delta: float) -> void:
 			base.apply_impulse(impulse, position)
 			jumpCounter = 0
 			jumpTime = rng.randf_range(3.0, 5.0)
-			print("JUMP!")
 		else:
 			jumpCounter += delta
 			applyFriction()	

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbsi3rfo0n4vd"]
+
+[ext_resource type="Shader" uid="uid://ck636yjpm4ogk" path="res://Shaders/Level1WinVolume.gdshader" id="1_2iohq"]
+[ext_resource type="Script" uid="uid://c42r201kgqdu4" path="res://Levels/level_1_win_volume.gd" id="1_8wsge"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nae7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wsge"]
+render_priority = 0
+shader = ExtResource("1_2iohq")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nae7v"]
+material = SubResource("ShaderMaterial_8wsge")
+
+[node name="Level1WinVolume" type="Node3D"]
+script = ExtResource("1_8wsge")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2.49065, 0, 0, 0, 2.49065, 0, 0, 0, 2.49065, 0, 2.5, 0)
+shape = SubResource("CylinderShape3D_nae7v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.50718, 0, 0, 0, 2.50718, 0, 0, 0, 2.50718, 0, 2.5, 0)
+mesh = SubResource("CylinderMesh_nae7v")
+
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area3D" to="." method="_on_area_3d_area_shape_exited"]

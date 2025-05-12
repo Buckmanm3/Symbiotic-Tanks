@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://doh33f20xoyvq"]
+[gd_scene load_steps=19 format=3 uid="uid://doh33f20xoyvq"]
 
 [ext_resource type="PackedScene" uid="uid://bdmnncag57bv6" path="res://Nodes/Base.tscn" id="1_3anf8"]
-[ext_resource type="Shader" uid="uid://c8wsaedbtp1gq" path="res://Levels/FloorShader.gdshader" id="1_fhqol"]
+[ext_resource type="Shader" uid="uid://c8wsaedbtp1gq" path="res://Shaders/FloorShader.gdshader" id="1_fhqol"]
 [ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player/Player.tscn" id="2_fhqol"]
-[ext_resource type="Shader" uid="uid://vqml5nnm8lp0" path="res://Levels/Ground.gdshader" id="2_iotdp"]
+[ext_resource type="Shader" uid="uid://vqml5nnm8lp0" path="res://Shaders/Ground.gdshader" id="2_iotdp"]
+[ext_resource type="PackedScene" uid="uid://bbsi3rfo0n4vd" path="res://Levels/Level1WinVolume.tscn" id="5_nutv8"]
 
 [sub_resource type="Environment" id="Environment_3anf8"]
 background_mode = 1
@@ -49,6 +50,17 @@ shader = ExtResource("2_iotdp")
 shader_parameter/height_scale = 0.05
 shader_parameter/displacement = SubResource("NoiseTexture2D_nutv8")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nutv8"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_05pb0"]
+material = SubResource("StandardMaterial3D_nutv8")
+text = "Right click to control the Camera
+Hover the mouse over an eye and
+left click to grab them, move them
+onto the green nodes to attach them
+get to the end with 4 eyes to win :)"
+
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -69,7 +81,7 @@ mesh = SubResource("PlaneMesh_iotdp")
 skeleton = NodePath("../..")
 
 [node name="floor" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.653025, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.65, 0)
 mesh = SubResource("PlaneMesh_nutv8")
 surface_material_override/0 = SubResource("ShaderMaterial_05pb0")
 
@@ -96,3 +108,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.753163, 0.075, 0.277557)
 
 [node name="Eye7" parent="." instance=ExtResource("1_3anf8")]
 transform = Transform3D(0.305147, 0, -0.952305, 0, 1, 0, 0.952305, 0, 0.305147, -1.23535, 0.075, 0.279288)
+
+[node name="Level1WinVolume" parent="." instance=ExtResource("5_nutv8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03087, 0.00717998, -12.124)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.430581, 0, 0.0505859, 0, 1, 0, -0.842953, 0, 0.0258393, -1.57273, 0.89582, -0.459725)
+mesh = SubResource("TextMesh_05pb0")
+skeleton = NodePath("../Level1WinVolume")

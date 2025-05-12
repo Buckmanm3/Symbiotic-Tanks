@@ -7,7 +7,7 @@ varying vec2 tex_position;
 
 void vertex() {
   tex_position = VERTEX.xz / 2.0 + 0.5;
-  float height = texture(displacement, tex_position).x;
+  float height = texture(displacement, tex_position).x + (sin(TIME) / 80.0);
   VERTEX.y += height * height_scale;
 }
 

@@ -20,7 +20,6 @@ func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_inde
 					connectedNode.base.sleeping = true;
 					connectedNode.snapped = true;
 					snap.emit()
-					print("Snap")
 
 func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() != null:
@@ -32,7 +31,6 @@ func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index
 					connectedNode.snapped = false;
 					connectedNode = null
 					snap.emit()
-					print("Unsnap")
 
 func _process(delta: float) -> void:
 	if snapped:
