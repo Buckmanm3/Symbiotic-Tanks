@@ -1,3 +1,98 @@
-[gd_scene format=3 uid="uid://doh33f20xoyvq"]
+[gd_scene load_steps=16 format=3 uid="uid://doh33f20xoyvq"]
+
+[ext_resource type="PackedScene" uid="uid://bdmnncag57bv6" path="res://Nodes/Base.tscn" id="1_3anf8"]
+[ext_resource type="Shader" uid="uid://c8wsaedbtp1gq" path="res://Levels/FloorShader.gdshader" id="1_fhqol"]
+[ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player/Player.tscn" id="2_fhqol"]
+[ext_resource type="Shader" uid="uid://vqml5nnm8lp0" path="res://Levels/Ground.gdshader" id="2_iotdp"]
+
+[sub_resource type="Environment" id="Environment_3anf8"]
+background_mode = 1
+background_color = Color(0.788235, 0.47451, 0.623529, 1)
+fog_enabled = true
+fog_light_color = Color(0.768971, 0.430531, 0.526099, 1)
+fog_light_energy = 1.63
+fog_sun_scatter = 0.19
+fog_density = 0.0569
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fhqol"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_iotdp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fhqol"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iotdp"]
+noise = SubResource("FastNoiseLite_fhqol")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iotdp"]
+render_priority = 0
+shader = ExtResource("1_fhqol")
+shader_parameter/height_scale = 0.03
+shader_parameter/displacement = SubResource("NoiseTexture2D_iotdp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iotdp"]
+material = SubResource("ShaderMaterial_iotdp")
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nutv8"]
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iotdp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nutv8"]
+noise = SubResource("FastNoiseLite_iotdp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05pb0"]
+render_priority = 0
+shader = ExtResource("2_iotdp")
+shader_parameter/height_scale = 0.05
+shader_parameter/displacement = SubResource("NoiseTexture2D_nutv8")
 
 [node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3anf8")
+camera_attributes = SubResource("CameraAttributesPractical_fhqol")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.86793, -0.341764, -0.360409, 0.496686, 0.597213, 0.629793, 0, -0.725627, 0.688089, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_iotdp")
+
+[node name="Water" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -1.74025, 0)
+mesh = SubResource("PlaneMesh_iotdp")
+skeleton = NodePath("../..")
+
+[node name="floor" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.653025, 0)
+mesh = SubResource("PlaneMesh_nutv8")
+surface_material_override/0 = SubResource("ShaderMaterial_05pb0")
+
+[node name="Player" parent="." instance=ExtResource("2_fhqol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00141025, 0.0567385, -0.000252426)
+
+[node name="Eye1" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(0.517788, 0, 0.855509, 0, 1, 0, -0.855509, 0, 0.517788, -0.928174, 0.075, 0.0304639)
+
+[node name="Eye2" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(0.624452, 0, 0.781063, 0, 1, 0, -0.781063, 0, 0.624452, -1.01234, 0.169586, -0.220383)
+
+[node name="Eye3" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(0.616995, 0, 0.786967, 0, 1, 0, -0.786967, 0, 0.616995, -0.928174, 0.075, -0.225723)
+
+[node name="Eye4" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(0.366647, 0, 0.93036, 0, 1, 0, -0.93036, 0, 0.366647, -0.711244, 0.075, 0.0304639)
+
+[node name="Eye5" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.928174, 0.075, 0.232624)
+
+[node name="Eye6" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.753163, 0.075, 0.277557)
+
+[node name="Eye7" parent="." instance=ExtResource("1_3anf8")]
+transform = Transform3D(0.305147, 0, -0.952305, 0, 1, 0, 0.952305, 0, 0.305147, -1.23535, 0.075, 0.279288)

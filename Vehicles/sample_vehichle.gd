@@ -6,7 +6,7 @@ var NodesSnapped: Array[bool] = []
 func _ready() -> void:
 	for node in Nodes:
 		NodesSnapped.append(node.snapped)
-	Nodes[1].snap.connect(UpdateSnapped)
+		node.snap.connect(UpdateSnapped)
 
 func UpdateSnapped():
 	var size:int = Nodes.size()
