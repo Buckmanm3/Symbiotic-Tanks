@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr4qsy46aabid"]
+
+[ext_resource type="Script" uid="uid://di8347vyvbprg" path="res://Vehicles/4_wheel.gd" id="1_xff6h"]
+[ext_resource type="PackedScene" uid="uid://cgi7yymr0qc53" path="res://Nodes/Snap Point.tscn" id="2_n6k31"]
+[ext_resource type="PackedScene" uid="uid://7h4w0vvo6sea" path="res://Player/Player.tscn" id="3_rvlx4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n6k31"]
+points = PackedVector3Array(0.5, 0, 0, -0.5, 0, 0, 0, 0, 0.5, 0, 0, -0.5, 0, 0.3, 0)
+
+[sub_resource type="Curve3D" id="Curve3D_n6k31"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6k31"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.196078)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rvlx4"]
+material = SubResource("StandardMaterial3D_n6k31")
+
+[node name="4Wheel" type="VehicleBody3D" node_paths=PackedStringArray("points")]
+script = ExtResource("1_xff6h")
+points = [NodePath("Snap1"), NodePath("Snap2"), NodePath("Snap3"), NodePath("Snap4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0593655, 0)
+shape = SubResource("ConvexPolygonShape3D_n6k31")
+
+[node name="Debug Path" type="Path3D" parent="."]
+curve = SubResource("Curve3D_n6k31")
+
+[node name="Snap1" parent="." instance=ExtResource("2_n6k31")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.5, 0, 0)
+
+[node name="Snap2" parent="." instance=ExtResource("2_n6k31")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.5, 0, 0)
+
+[node name="Snap3" parent="." instance=ExtResource("2_n6k31")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.5)
+
+[node name="Snap4" parent="." instance=ExtResource("2_n6k31")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.5)
+
+[node name="Player" parent="." instance=ExtResource("3_rvlx4")]
+
+[node name="Beams" type="Node3D" parent="."]
+
+[node name="Beam1" type="MeshInstance3D" parent="Beams"]
+transform = Transform3D(-1.54543e-09, -0.247487, 0.0353553, 0.05, -1.5299e-08, 0, 1.54543e-09, 0.247487, 0.0353553, -0.25, 0, -0.25)
+mesh = SubResource("CylinderMesh_rvlx4")
+skeleton = NodePath("../../CollisionShape3D")
+
+[node name="Beam2" type="MeshInstance3D" parent="Beams"]
+transform = Transform3D(-1.54543e-09, -0.247487, -0.0353553, 0.05, -1.5299e-08, 0, -1.54543e-09, -0.247487, 0.0353553, 0.25, 0, -0.25)
+mesh = SubResource("CylinderMesh_rvlx4")
+skeleton = NodePath("../../CollisionShape3D")
+
+[node name="Beam3" type="MeshInstance3D" parent="Beams"]
+transform = Transform3D(-1.54543e-09, -0.247487, 0.0353553, 0.05, -1.5299e-08, 0, 1.54543e-09, 0.247487, 0.0353553, 0.25, 0, 0.25)
+mesh = SubResource("CylinderMesh_rvlx4")
+skeleton = NodePath("../../CollisionShape3D")
+
+[node name="Beam4" type="MeshInstance3D" parent="Beams"]
+transform = Transform3D(-1.54543e-09, -0.247487, -0.0353553, 0.05, -1.5299e-08, 0, -1.54543e-09, -0.247487, 0.0353553, -0.25, 0, 0.25)
+mesh = SubResource("CylinderMesh_rvlx4")
+skeleton = NodePath("../../CollisionShape3D")

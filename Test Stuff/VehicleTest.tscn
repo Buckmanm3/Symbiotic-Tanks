@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn63cn0iqpo8p"]
+[gd_scene load_steps=11 format=3 uid="uid://dn63cn0iqpo8p"]
 
 [ext_resource type="Script" uid="uid://q8ru8al7cxo1" path="res://Test Stuff/SimpleVehicle.gd" id="1_67dkh"]
+[ext_resource type="PackedScene" uid="uid://dr4qsy46aabid" path="res://Vehicles/4Wheel.tscn" id="1_no356"]
 [ext_resource type="PackedScene" uid="uid://dw6o4gykk25jx" path="res://Blender/Eye.blend" id="2_guexa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_67dkh"]
@@ -21,6 +22,9 @@ points = PackedVector3Array(1, 0, 0, 1, 0.5, 0, -0.5, 0, 0, -0.5, 0.5, 0, 0, 0, 
 [sub_resource type="SphereShape3D" id="SphereShape3D_guexa"]
 
 [node name="VehicleTest" type="Node3D"]
+
+[node name="4Wheel" parent="." instance=ExtResource("1_no356")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21319, 0.722867, 1.68848)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.64596)

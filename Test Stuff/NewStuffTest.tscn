@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw363ot604x4e"]
+
+[ext_resource type="PackedScene" uid="uid://dr4qsy46aabid" path="res://Vehicles/4Wheel.tscn" id="1_e8g7a"]
+[ext_resource type="PackedScene" uid="uid://dpvw6hn5r7hg" path="res://Nodes/NewBase.tscn" id="2_vyeon"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vyeon"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y8533"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa07d"]
+albedo_color = Color(1, 0.321569, 0.0941176, 1)
+
+[node name="NewStuffTest" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_vyeon")
+debug_fill = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_y8533")
+surface_material_override/0 = SubResource("StandardMaterial3D_sa07d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.678749, 0.73437, 0, -0.73437, 0.678749, 0, 0, 0)
+
+[node name="4Wheel" parent="." instance=ExtResource("1_e8g7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168199, 0)
+
+[node name="NewBase" parent="." instance=ExtResource("2_vyeon")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.144264, -0.992257)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpvw6hn5r7hg"]
+
+[ext_resource type="Script" uid="uid://bdydabtg603l1" path="res://Nodes/new_base.gd" id="1_0w8js"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_12txs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0w8js"]
+
+[node name="NewBase" type="VehicleWheel3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_0w8js")
+
+[node name="MouseCollider" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseCollider"]
+shape = SubResource("SphereShape3D_12txs")
+
+[node name="Collider" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider"]
+shape = SubResource("SphereShape3D_12txs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000934601, 0.0118363, -0.0542772)
+layers = 2
+mesh = SubResource("SphereMesh_0w8js")
+
+[connection signal="mouse_entered" from="MouseCollider" to="." method="_on_mouse_collider_mouse_entered"]
+[connection signal="mouse_exited" from="MouseCollider" to="." method="_on_mouse_collider_mouse_exited"]
