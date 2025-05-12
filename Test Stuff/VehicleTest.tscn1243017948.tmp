@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn63cn0iqpo8p"]
+
+[ext_resource type="Script" uid="uid://q8ru8al7cxo1" path="res://Test Stuff/SimpleVehicle.gd" id="1_67dkh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_guexa"]
+points = PackedVector3Array(20, 0, 0, -20, 0, 0, 20, -3, 0, -20, -3, 0, 0, 0, 20, 0, 0, -20, 0, -3, 20, 0, -3, -20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no356"]
+albedo_color = Color(0.611765, 0.290196, 0.0705882, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_of2mo"]
+material = SubResource("StandardMaterial3D_no356")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xk0do"]
+points = PackedVector3Array(1, 0, 0, 1, 0.5, 0, -0.5, 0, 0, -0.5, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0.5, 0, 0.5, -1, 0, 0, -1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mf35i"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c7cwk"]
+
+[node name="VehicleTest" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_guexa")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(9.97021, 0, 9.97021, 0, 14.1, 0, -9.97021, 0, 9.97021, 0, 0, 0)
+mesh = SubResource("PlaneMesh_of2mo")
+
+[node name="VehicleBody3D" type="VehicleBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1337, 0)
+script = ExtResource("1_67dkh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleBody3D"]
+transform = Transform3D(0.779524, 0, 0.626373, 0, 1, 0, -0.626373, 0, 0.779524, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_xk0do")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D"]
+transform = Transform3D(1.37891, 0, 0, 0, -6.71693e-08, -0.866213, 0, 1.53666, -3.78634e-08, 0, 0.13, -0.004)
+mesh = SubResource("PrismMesh_mf35i")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.703248, -0.2, -0.719672)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D"]
+transform = Transform3D(-4.37114e-08, -0.225107, 0, 1, -9.83973e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c7cwk")
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.553167, -0.2, 0.167846)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D2"]
+transform = Transform3D(-4.37114e-08, -0.225107, 0, 1, -9.83973e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c7cwk")
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.803647, -0.2, -0.583355)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D3"]
+transform = Transform3D(-4.37114e-08, -0.225107, 0, 1, -9.83973e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c7cwk")
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.580938, -0.2, 0.167846)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/VehicleWheel3D4"]
+transform = Transform3D(-4.37114e-08, -0.225107, 0, 1, -9.83973e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c7cwk")
+
+[node name="Camera3D" type="Camera3D" parent="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.0813, -2.15)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.796414, -0.604752, 0, -0.0354968, -0.0467467, 0.998276, -0.603709, -0.795041, -0.0586965, 0, 0, 0)
