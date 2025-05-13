@@ -55,11 +55,15 @@ albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_05pb0"]
 material = SubResource("StandardMaterial3D_nutv8")
-text = "Right click to control the Camera
+text = "Right click to control the Camera.
 Hover the mouse over an eye and
-left click to grab them, move them
-onto the green nodes to attach them
-get to the end with 4 eyes to win :)"
+left click to grab it, use scroll wheel 
+to move it  closer/further then move it
+onto one of the green nodes to attach it
+as a wheel. Now that you have a wheel,
+press arrow keys or wasd to move
+ get to the end with 4 eyes as wheels to win :)"
+horizontal_alignment = 0
 
 [node name="Level1" type="Node3D"]
 
@@ -113,6 +117,6 @@ transform = Transform3D(0.305147, 0, -0.952305, 0, 1, 0, 0.952305, 0, 0.305147, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03087, 0.00717998, -12.124)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.430581, 0, 0.0505859, 0, 1, 0, -0.842953, 0, 0.0258393, -1.57273, 0.89582, -0.459725)
+transform = Transform3D(0.430581, 0, 0.0505859, 0, 1, 0, -0.842953, 0, 0.0258393, -2.39521, 1.16511, 0.563576)
 mesh = SubResource("TextMesh_05pb0")
 skeleton = NodePath("../Level1WinVolume")

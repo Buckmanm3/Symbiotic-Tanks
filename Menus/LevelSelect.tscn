@@ -42,18 +42,4 @@ size_flags_horizontal = 3
 theme = ExtResource("2_0am2j")
 text = "Lv1"
 
-[node name="Lv2" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_0am2j")
-text = "Lv2"
-
-[node name="Lv3" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_0am2j")
-text = "Lv3"
-
 [connection signal="pressed" from="HBoxContainer/Lv1" to="." method="_on_lv_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/Lv2" to="." method="_on_lv_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/Lv3" to="." method="_on_lv_3_pressed"]

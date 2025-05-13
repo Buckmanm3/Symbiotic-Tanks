@@ -13,5 +13,5 @@ void vertex() {
 
 void fragment(){
 
-	ALBEDO = vec3(.5,0,.1);
+	ALBEDO = vec3(.6,.5,0);
 }
